@@ -1,0 +1,284 @@
+/* Основные стили */
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+/* Стили для карточек */
+.stat-card {
+    transition: all 0.3s ease;
+    animation: fadeInUp 0.5s ease-out;
+}
+
+.stat-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+/* Loading state for cards */
+.loading {
+    opacity: 0.6;
+}
+
+/* Слайдер */
+.slider-container {
+    position: relative;
+    overflow: hidden;
+    border-radius: 12px;
+    min-height: 16rem; /* безопасная высота, можно отрегулировать */
+}
+
+.slider-wrapper {
+    display: flex;
+    transition: transform 0.5s ease;
+    width: 100%;
+}
+
+.slider-image {
+    min-width: 100%;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Кнопки слайдера */
+.slider-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0,0,0,0.35);
+    color: white;
+    border: none;
+    width: 38px;
+    height: 56px;
+    border-radius: 8px;
+    font-size: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+}
+.slider-button.prev { left: 12px; }
+.slider-button.next { right: 12px; }
+.slider-button:hover { background: rgba(0,0,0,0.6); }
+
+/* --- Owner line: адаптивный цвет --- */
+/* По умолчанию (светлая тема) */
+html:not(.dark) .owner-line,
+.owner-line {
+    font-size: 0.95rem;
+    color: #111; /* тёмный в светлой теме */
+}
+
+/* В тёмной теме — явный белый (чтобы точно видно было на тёмном фоне) */
+html.dark .owner-line {
+    color: #ffffff;
+}
+
+/* Ссылка владельца остаётся синей и заметной в обеих темах */
+.owner-line a {
+    color: #00A2FF;
+    font-weight: 600;
+    text-decoration: none;
+    /* чтобы ссылка была видна на светлом и тёмном фоне, можно добавить тонкую тень */
+    text-shadow: 0 0 0 transparent;
+}
+.owner-line a:hover { text-decoration: underline; }
+
+/* Maturity badge */
+.maturity-badge {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.06);
+    font-weight: 600;
+    color: inherit;
+}
+html.dark .maturity-badge {
+    background: rgba(255,255,255,0.06);
+}
+
+/* Остальной ваш CSS */
+
+/* Контейнеры для графиков */
+.chart-container {
+    position: relative;
+    height: 250px;
+    width: 100%;
+}
+
+.loading-chart {
+    animation: pulse 1.5s ease-in-out infinite;
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: loading 1.5s infinite;
+}
+
+html.dark .loading-chart,
+.dark .loading-chart {
+    background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+    background-size: 200% 100%;
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Стили для таблицы */
+table {
+    border-collapse: separate;
+    border-spacing: 0 8px;
+}
+
+tbody tr {
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    transition: background-color 0.2s;
+}
+
+tbody tr:hover {
+    background-color: rgba(0, 162, 255, 0.1);
+}
+
+html.dark tbody tr,
+.dark tbody tr {
+    background-color: rgba(255, 255, 255, 0.03);
+}
+
+td, th {
+    padding: 12px 16px;
+}
+
+td:first-child {
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+}
+
+td:last-child {
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+/* Рекорды с иконками */
+.record-online::before {
+    content: '👥';
+    margin-right: 8px;
+}
+
+.record-visits::before {
+    content: '📊';
+    margin-right: 8px;
+}
+
+.record-favorites::before {
+    content: '❤️';
+    margin-right: 8px;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+    .stat-card {
+        padding: 1rem;
+    }
+
+    .chart-container {
+        height: 200px;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+
+    td, th {
+        padding: 8px 12px;
+    }
+
+    /* чуть уменьшить размер текста владельца на узких экранах */
+    .owner-line { font-size: 0.9rem; }
+}
+
+/* Кастомный скроллбар */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+html.dark ::-webkit-scrollbar-track,
+.dark ::-webkit-scrollbar-track {
+    background: #2a2a2a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+html.dark ::-webkit-scrollbar-thumb,
+.dark ::-webkit-scrollbar-thumb {
+    background: #666;
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover,
+.dark ::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
+
+/* Кнопки переключения графиков */
+.chart-type-btn {
+    transition: all 0.2s;
+}
+
+.chart-type-btn.active {
+    background: #00A2FF;
+    color: white;
+}
+
+/* Анимация для обновления данных */
+@keyframes highlight {
+    0% {
+        background-color: rgba(0, 162, 255, 0.3);
+    }
+    100% {
+        background-color: transparent;
+    }
+}
+
+.data-updated {
+    animation: highlight 1s ease-out;
+}
