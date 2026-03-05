@@ -11,6 +11,7 @@ body {
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    /* do NOT override color here; use Tailwind classes on body for color control */
 }
 
 /* Header / avatar */
@@ -19,7 +20,9 @@ body {
     background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
 }
 
-/* Card for each experience */
+/* Card for each experience
+   Important: card text color uses `color: inherit` so it follows body / parent text color.
+*/
 .exp-card {
     background: #f8fafc;
     border-radius: 12px;
@@ -28,13 +31,13 @@ body {
     display: flex;
     gap: 12px;
     align-items: center;
-    color: var(--text-light);
+    color: inherit;           /* inherit from parent (body text color via Tailwind) */
     text-decoration: none;
 }
 
 .dark .exp-card {
     background: var(--roblox-dark-secondary);
-    color: var(--text-dark);
+    /* color still inherited from body dark:text-white so no override here */
 }
 
 .exp-card:hover {
@@ -59,7 +62,7 @@ body {
 
 .exp-title {
     font-weight: 600;
-    color: inherit; /* follow .exp-card color (handles dark/light) */
+    color: inherit; /* follow parent text color */
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
