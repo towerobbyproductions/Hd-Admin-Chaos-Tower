@@ -1,114 +1,105 @@
-:root {
-    --roblox-dark: #191B1D;
-    --roblox-dark-secondary: #232527;
-    --roblox-blue: #00A2FF;
-    --text-light: #111827; /* gray-900 */
-    --text-dark: #e6eef8;  /* light text for dark bg */
+:root{
+  /* base colors */
+  --bg-light: #ffffff;
+  --bg-dark: #111217; /* чуть светлее глубокого черного, безопасно для глаза */
+  --bg-card-light: #f8fafc;
+  --bg-card-dark: #232527;
+  --text-light: #111827; /* dark text for light bg */
+  --text-dark: #e6eef8;  /* light text for dark bg */
+  --muted-light: #6b7280;
+  --muted-dark: #9ca3af;
+  --roblox-blue: #00A2FF;
+
+  /* default -> dark theme (we want dark by default) */
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+  --card-bg: var(--bg-card-dark);
+  --muted: var(--muted-dark);
 }
 
-/* Base font */
-body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    /* do NOT override color here; use Tailwind classes on body for color control */
+/* When html has class light, swap variables */
+html.light {
+  --bg: var(--bg-light);
+  --text: var(--text-light);
+  --card-bg: var(--bg-card-light);
+  --muted: var(--muted-light);
 }
 
-/* Header / avatar */
-#communityAvatar {
-    border-radius: 12px;
-    background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01));
+/* When html has class dark, ensure dark variables (explicit) */
+html.dark {
+  --bg: var(--bg-dark);
+  --text: var(--text-dark);
+  --card-bg: var(--bg-card-dark);
+  --muted: var(--muted-dark);
 }
 
-/* Card for each experience
-   Important: card text color uses `color: inherit` so it follows body / parent text color.
-*/
-.exp-card {
-    background: #f8fafc;
-    border-radius: 12px;
-    padding: 12px;
-    transition: transform 0.18s ease, box-shadow 0.18s ease;
-    display: flex;
-    gap: 12px;
-    align-items: center;
-    color: inherit;           /* inherit from parent (body text color via Tailwind) */
-    text-decoration: none;
+/* Apply global background and text color */
+html, body {
+  height: 100%;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-.dark .exp-card {
-    background: var(--roblox-dark-secondary);
-    /* color still inherited from body dark:text-white so no override here */
+/* Links */
+a {
+  color: var(--roblox-blue);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+/* Header avatar */
+#communityAvatar { border-radius: 12px; background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(0,0,0,0.01)); }
+
+/* About / Section cards backgrounds (global) */
+#aboutSection {
+  background: var(--card-bg);
+  color: inherit; /* inherit text color */
 }
 
-.exp-card:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 18px 35px -12px rgba(0,0,0,0.18), 0 8px 12px -10px rgba(0,0,0,0.06);
+/* Experiences card */
+.exp-card{
+  background: var(--card-bg);
+  color: inherit;           /* inherit from body (ensures readable text in both themes) */
+  border-radius: 12px;
+  padding: 12px;
+  transition: transform .18s ease, box-shadow .18s ease, background .18s;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  text-decoration: none;
+}
+.exp-card:hover{
+  transform: translateY(-6px);
+  box-shadow: 0 18px 35px -12px rgba(0,0,0,0.18), 0 8px 12px -10px rgba(0,0,0,0.06);
 }
 
-.exp-thumb {
-    width: 80px;
-    height: 80px;
-    border-radius: 8px;
-    object-fit: cover;
-    flex-shrink: 0;
-    background: #e6e9ee;
+/* thumb */
+.exp-thumb{ width:80px;height:80px;border-radius:8px;object-fit:cover;flex-shrink:0;background:#e6e9ee; }
+
+/* text inside card */
+.exp-title{ font-weight:600; color: inherit; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+.exp-meta{ font-size:0.9rem; color: var(--muted); }
+
+/* rating */
+.exp-rating{ display:inline-block; padding:4px 8px; border-radius:999px; font-weight:600; background: rgba(0,162,255,0.12); color: var(--roblox-blue); }
+
+/* small UI controls (buttons/links) inherit readable colors */
+button, .inline-control {
+  background: var(--card-bg);
+  color: inherit;
+  border: 1px solid rgba(255,255,255,0.03);
+  padding: 6px 10px;
+  border-radius:8px;
 }
 
-/* info inside card */
-.exp-info {
-    flex: 1;
-    min-width: 0;
-}
+/* scrollbar */
+::-webkit-scrollbar{ width:10px; }
+::-webkit-scrollbar-track{ background: var(--card-bg); }
+::-webkit-scrollbar-thumb{ background: rgba(0,0,0,0.35); border-radius:5px; }
 
-.exp-title {
-    font-weight: 600;
-    color: inherit; /* follow parent text color */
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-.exp-meta {
-    font-size: 0.9rem;
-    color: #6b7280; /* gray-500 for light theme */
-}
-
-/* meta color in dark theme */
-.dark .exp-meta {
-    color: #9ca3af; /* lighter gray for dark theme */
-}
-
-/* rating bubble */
-.exp-rating {
-    display: inline-block;
-    padding: 4px 8px;
-    border-radius: 999px;
-    font-weight: 600;
-    background: rgba(0,162,255,0.12);
-    color: var(--roblox-blue);
-}
-
-/* responsive tweaks */
-@media (max-width: 640px) {
-    .exp-thumb { width: 72px; height: 72px; }
-}
-
-/* Loading shimmer */
-.loading {
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(90deg, rgba(255,255,255,0.03), rgba(255,255,255,0.06) 50%, rgba(255,255,255,0.03));
-    animation: loading 1.4s infinite linear;
-}
-
-@keyframes loading {
-    0% { background-position: -200% 0; }
-    100% { background-position: 200% 0; }
-}
-
-/* Scrollbar tweaks */
-::-webkit-scrollbar { width: 10px; }
-::-webkit-scrollbar-track { background: #f1f1f1; }
-.dark ::-webkit-scrollbar-track { background: #232527; }
-::-webkit-scrollbar-thumb { background: #888; border-radius: 5px; }
-.dark ::-webkit-scrollbar-thumb { background: #444; }
+/* responsive tweak */
+@media (max-width:640px){ .exp-thumb{ width:72px;height:72px; } }
