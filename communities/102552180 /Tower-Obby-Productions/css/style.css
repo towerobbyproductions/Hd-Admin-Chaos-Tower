@@ -103,3 +103,63 @@ button, .inline-control {
 
 /* responsive tweak */
 @media (max-width:640px){ .exp-thumb{ width:72px;height:72px; } }
+
+/* --- responsive grid: делаем карточки шире и авто-адаптивными --- */
+#experiencesGrid {
+  /* заменяет tailwind-cols: позволит карточкам расширяться до удобной ширины */
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem; /* тот же gap:4 в tailwind примерно */
+}
+
+/* общие мелочи для карточки */
+.exp-card {
+  display: flex;            /* уже было, но убедимся */
+  gap: 12px;
+  align-items: flex-start;  /* выравниваем по верху чтобы текст не смешивался с картинкой */
+  padding: 12px;
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;         /* важно — чтобы ничего не вылезало визуально */
+}
+
+/* контейнер с текстом должен позволять дочерним элементам усекаться */
+.exp-info {
+  min-width: 0;             /* критично для корректной работы text-overflow внутри flex */
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  overflow: hidden;
+}
+
+/* Заголовок: обрезаем аккуратно до 2-х строк (альтернатива single-line ellipsis) */
+.exp-title {
+  font-weight: 600;
+  color: inherit;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;        /* ограничение двумя строками */
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.15;
+  word-break: break-word;       /* безопасный перенос для очень длинных слов/эмодзи */
+}
+
+/* Мета (рейтинг/активные/посещения) — даём перенос и отступы */
+.exp-meta {
+  font-size: 0.9rem;
+  color: var(--muted);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.75rem;
+  align-items: center;
+}
+
+/* рейтинг не должен сжиматься */
+.exp-rating { flex-shrink: 0; }
+
+/* уменьшаем миниатюру на очень узких экранах */
+@media (max-width: 420px) {
+  .exp-thumb { width: 64px; height: 64px; }
+  #experiencesGrid { grid-template-columns: 1fr; }
+}
