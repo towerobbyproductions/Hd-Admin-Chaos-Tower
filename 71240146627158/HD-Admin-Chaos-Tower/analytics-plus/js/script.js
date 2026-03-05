@@ -1,7 +1,7 @@
 // ====== Config: вставь свои данные ======
 const SUPABASE_CONFIG = {
-    url: 'https://your-project.supabase.co', // Заменить
-    anonKey: 'your-anon-key' // Заменить
+    url: 'https://scejfyvngsmjqsxvgewl.supabase.co', // Заменить
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InNjZWpmeXZuZ3NtanFzeHZnZXdsIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzI2OTczMTEsImV4cCI6MjA4ODI3MzMxMX0.QxD-eQ8a5FXofemsB5KwI4yfFfcOWRfqhgaDI-6Z2ZI' // Заменить
 };
 
 const GAME_CONFIG = {
