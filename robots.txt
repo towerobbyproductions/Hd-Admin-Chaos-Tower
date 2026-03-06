@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://towerobbyproductions.github.io/sitemap.xml
