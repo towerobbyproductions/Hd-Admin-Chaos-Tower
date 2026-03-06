@@ -1,6 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
+  <!-- Главная страница -->
+  <url>
+    <loc>https://towerobbyproductions.github.io/</loc>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
   <!-- HD Admin Chaos Tower Game Page -->
   <url>
     <loc>https://towerobbyproductions.github.io/games/71240146627158/HD-Admin-Chaos-Tower/</loc>
@@ -10,7 +17,7 @@
 
   <!-- Tower Obby Productions Community Page -->
   <url>
-    <loc>https://towerobbyproductions.github.io/games/communities/102552180/Tower-Obby-Productions/</loc>
+    <loc>https://towerobbyproductions.github.io/communities/102552180/Tower-Obby-Productions/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
