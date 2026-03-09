@@ -1,0 +1,100 @@
+/* Ultra Analytics V3 Styles */
+:root {
+  --roblox-blue: #00A2FF;
+  --roblox-dark: #191B1D;
+  --roblox-dark-secondary: #232527;
+  --roblox-purple: #9D4EDD;
+  --roblox-green: #00FF85;
+  --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  overflow: hidden;
+}
+
+/* Sidebar Styles */
+.nav-link {
+  transition: var(--transition-smooth);
+}
+
+.nav-link.active {
+  background: linear-gradient(135deg, rgba(0, 162, 255, 0.1) 0%, rgba(0, 162, 255, 0.05) 100%);
+  border-left: 3px solid var(--roblox-blue);
+}
+
+/* Premium Stat Cards */
+.stat-card-premium {
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-smooth);
+  animation: slideInUp 0.6s ease-out;
+}
+
+.stat-card-premium::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.stat-card-premium:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 30px 40px -20px rgba(0,0,0,0.3);
+}
+
+.stat-card-premium:hover::before {
+  opacity: 1;
+}
+
+/* Chart Containers */
+.chart-container {
+  position: relative;
+  width: 100%;
+  min-height: 250px;
+}
+
+/* Heatmap Grid */
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: repeat(24, 1fr);
+  gap: 2px;
+  background: rgba(255,255,255,0.05);
+  padding: 10px;
+  border-radius: 12px;
+}
+
+.heatmap-cell {
+  aspect-ratio: 1;
+  border-radius: 4px;
+  transition: var(--transition-smooth);
+  cursor: pointer;
+}
+
+.heatmap-cell:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+  z-index: 10;
+}
+
+.heatmap-label {
+  font-size: 10px;
+  text-align: center;
+  color: rgba(255,255,255,0.5);
+  margin-bottom: 4px;
+}
+
+/* Animations */
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
