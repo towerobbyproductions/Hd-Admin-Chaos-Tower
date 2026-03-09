@@ -98,3 +98,249 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -1000px 0; }
+  100% { background-position: 1000px 0; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+/* Loading States */
+.loading-shimmer {
+  background: linear-gradient(90deg, 
+    rgba(255,255,255,0) 0%, 
+    rgba(255,255,255,0.1) 50%, 
+    rgba(255,255,255,0) 100%);
+  background-size: 1000px 100%;
+  animation: shimmer 2s infinite;
+}
+
+.pulse-animation {
+  animation: pulse 2s infinite;
+}
+
+.float-animation {
+  animation: float 3s ease-in-out infinite;
+}
+
+/* Table Styles */
+#detailedStatsTable tbody tr {
+  transition: var(--transition-smooth);
+  border-radius: 8px;
+}
+
+#detailedStatsTable tbody tr:hover {
+  background: rgba(0, 162, 255, 0.1);
+  transform: scale(1.01);
+}
+
+/* Status Badges */
+.status-badge {
+  padding: 4px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-good {
+  background: rgba(0, 255, 133, 0.2);
+  color: #00FF85;
+}
+
+.status-warning {
+  background: rgba(255, 193, 7, 0.2);
+  color: #FFC107;
+}
+
+.status-critical {
+  background: rgba(220, 53, 69, 0.2);
+  color: #DC3545;
+}
+
+/* AI Insights Cards */
+.insight-card {
+  background: rgba(255,255,255,0.05);
+  border-radius: 16px;
+  padding: 20px;
+  transition: var(--transition-smooth);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+
+.insight-card:hover {
+  transform: translateY(-4px);
+  background: rgba(255,255,255,0.1);
+  border-color: var(--roblox-blue);
+}
+
+/* Progress Bars */
+.progress-bar {
+  height: 6px;
+  border-radius: 3px;
+  background: rgba(255,255,255,0.1);
+  overflow: hidden;
+}
+
+.progress-bar-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 1s ease;
+}
+
+/* Tooltips */
+.custom-tooltip {
+  position: relative;
+}
+
+.custom-tooltip:hover::after {
+  content: attr(data-tooltip);
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.8);
+  color: white;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .chart-container {
+    min-height: 200px;
+  }
+  
+  .stat-card-premium {
+    padding: 16px;
+  }
+  
+  .heatmap-grid {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .grid {
+    gap: 12px;
+  }
+  
+  .stat-card-premium {
+    padding: 12px;
+  }
+  
+  .heatmap-grid {
+    grid-template-columns: repeat(8, 1fr);
+  }
+}
+
+/* Dark Mode Optimizations */
+.dark .heatmap-cell {
+  background: rgba(255,255,255,0.1);
+}
+
+.dark .heatmap-cell[data-value="high"] {
+  background: linear-gradient(135deg, #00A2FF, #0066FF);
+}
+
+.dark .heatmap-cell[data-value="medium"] {
+  background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.dark .heatmap-cell[data-value="low"] {
+  background: linear-gradient(135deg, #FF4444, #CC0000);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--roblox-blue);
+}
+
+/* Chart Customization */
+.chart-type-btn {
+  transition: var(--transition-smooth);
+}
+
+.chart-type-btn.active {
+  background: linear-gradient(135deg, var(--roblox-blue), #0066FF);
+  box-shadow: 0 4px 12px rgba(0, 162, 255, 0.3);
+}
+
+/* Mobile Menu */
+#mobileMenu {
+  backdrop-filter: blur(4px);
+  transition: opacity 0.3s ease;
+}
+
+#mobileMenu.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* Data Updated Animation */
+@keyframes dataPulse {
+  0% { background-color: rgba(0, 162, 255, 0.3); }
+  100% { background-color: transparent; }
+}
+
+.data-updated {
+  animation: dataPulse 1s ease-out;
+}
+
+/* Loading Spinner */
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(255,255,255,0.1);
+  border-top-color: var(--roblox-blue);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Graph Grid Lines Enhancement */
+.chart-container canvas {
+  border-radius: 12px;
+  filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));
+}
+
+/* Value Highlight */
+.value-highlight {
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #fff, #00A2FF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
