@@ -1,44 +1,99 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Privacy Policy - Tower Obby Productions</title>
-    <link rel="stylesheet" href="css/style.css">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Privacy Policy — Tower Obby Productions</title>
+  <link rel="stylesheet" href="css/style.css">
+  <meta name="robots" content="index, follow">
 </head>
-<body>
-    <header>
-        <h1>Privacy Policy</h1>
-    </header>
+<body class="dark">
 
-    <nav>
+  <header class="site-header">
+    <div class="inner">
+      <div class="brand">
+        <span class="logo" aria-hidden="true"></span>
+        <h1>Tower Obby Productions</h1>
+      </div>
+
+      <nav class="header-nav" aria-label="Main navigation">
         <a href="/">Home</a>
+        <a href="/games">Games</a>
+        <a href="/communities">Communities</a>
         <a href="/privacy">Privacy</a>
         <a href="/terms">Terms</a>
         <a href="/contact">Contact</a>
-    </nav>
+      </nav>
+    </div>
+  </header>
 
-    <main>
-        <h2>Introduction</h2>
-        <p>Welcome to Tower Obby Productions. This Privacy Policy explains how we handle your personal information and protect your privacy while using our website and services.</p>
+  <main class="main">
+    <article class="card" role="article" aria-labelledby="privacy-title">
+      <h2 id="privacy-title">Privacy Policy</h2>
 
-        <h2>Information We Collect</h2>
-        <p>We may collect non-personal information such as your device type, browser, and usage data. We do <strong>not</strong> collect personal data without your consent.</p>
+      <p class="small">Last updated: <time datetime="2026-03-14T10:02:00+00:00">March 14, 2026</time></p>
 
-        <h2>How We Use Your Information</h2>
-        <p>The information we collect is used solely to improve our website and user experience. We never sell or share your personal information with third parties.</p>
+      <section>
+        <h3>Introduction</h3>
+        <p>Welcome to Tower Obby Productions. We respect your privacy and take the protection of your personal data seriously. This policy explains what information we collect, how we use it, and your rights.</p>
+      </section>
 
-        <h2>Cookies</h2>
-        <p>We use cookies to enhance your browsing experience. Cookies do not store personal information and can be disabled in your browser settings.</p>
+      <section>
+        <h3>Information We Collect</h3>
+        <p>We may collect the following types of information:</p>
+        <ul>
+          <li>Non-personal technical data (browser, device type, IP address for analytics)</li>
+          <li>Data you voluntarily provide (contact form messages, email)</li>
+        </ul>
+        <p class="small">We do not collect personal data without your consent.</p>
+      </section>
 
-        <h2>Third-Party Services</h2>
-        <p>Our site may include links to third-party websites or services. We are not responsible for the privacy practices of these external sites.</p>
+      <section>
+        <h3>How We Use Information</h3>
+        <p>Data is used to improve site functionality, respond to inquiries, and for analytics. We do not sell personal data to third parties.</p>
+      </section>
 
-        <h2>Changes to This Policy</h2>
-        <p>We may update this Privacy Policy from time to time. The latest version will always be available at <code>/privacy</code>.</p>
+      <section>
+        <h3>Cookies</h3>
+        <p>We use cookies and similar technologies to provide basic site functionality and analytics. You can disable cookies in your browser, but some parts of the site may not work correctly.</p>
+      </section>
 
-        <h2>Contact Us</h2>
-        <p>If you have any questions regarding this Privacy Policy, please contact us via our <a href="/contact">Contact page</a>.</p>
-    </main>
+      <section>
+        <h3>Third-Party Services</h3>
+        <p>We may use third-party services (such as analytics or hosting). These providers have their own privacy policies — please review them when needed.</p>
+      </section>
+
+      <section>
+        <h3>Children</h3>
+        <p>Our site and services are not intended for children under 13. If you believe we have collected personal data from a child, contact us and we will remove it.</p>
+      </section>
+
+      <section>
+        <h3>Changes to This Policy</h3>
+        <p>We may update this policy occasionally. The latest version will be available at <a href="/privacy">/privacy</a>.</p>
+      </section>
+
+      <section>
+        <h3>Contact</h3>
+        <p>If you have questions about this policy, please use our <a href="/contact">contact page</a>.</p>
+      </section>
+    </article>
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="container">
+      <p class="footer-text">© <strong>Tower Obby Productions</strong> — All rights reserved.</p>
+      <p class="footer-text">Built with ❤️ — <a class="footer-link" href="/">towerobbydev.fun</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Optional: auto-detect system theme and apply class (light or dark).
+    try {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.classList.toggle('dark', prefersDark);
+      document.documentElement.classList.toggle('light', !prefersDark);
+    } catch (e) { /* ignore */ }
+  </script>
 </body>
 </html>
